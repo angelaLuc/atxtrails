@@ -1,0 +1,31 @@
+@import 'app-functions';
+$warning: #ff5733 !default;
+$success: #0d541e !default;
+
+$luca-blue: rgba(148, 186, 219, 1);
+$luca-white: white;
+$luca-green: green;
+$luca-gray: gray;
+$luca-yellow: yellow;
+$luca-orange: orange;
+$luca-brown: rgba(62, 10, 5, 1);
+$luca-red: #cd3333;
+$luca-black: rgba(0, 0, 0, 1);
+$luca-dark: rgba(46, 84, 117, 1);
+$luca-nav-lighten: rgba(0, 0, 0, 0.8);
+
+$luca-font-family: 'Verdana';
+$luca-font-family-normal: 'Verdana';
+$luca-font-family-nav: 'Verdana';
+$luca-font-family-nav-normal: 'Verdana';
+$luca-navbar-color: $luca-blue;
+$luca-footer-color: rgba(13, 26, 35, 0.95);
+
+//$primary:       $luca-blue !default;
+$blue: $luca-blue !default;
+$info: $luca-blue !default;
+$modal-lg: 1140px !default;
+//$carousel-transition:               transform 2s ease !default;
+
+$navbar-dark-toggler-icon-bg-show:       str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$luca-blue}' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M 5,5 L 25,25 M 25,5 L 5,25'/%3E%3C/svg%3E"), "#", "%23") !default;
+

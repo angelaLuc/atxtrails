@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "coverageFolder": "coverage",
+  "fixturesFolder": "tests/cypress/fixtures",
+  "integrationFolder": "tests/cypress/integration",
+  "screenshotsFolder": "tests/cypress/screenshots",
+  "pluginsFile": "tests/cypress/plugins/index.js",
+  "supportFile": "tests/cypress/support/index.js",
+  "video": false
+}
