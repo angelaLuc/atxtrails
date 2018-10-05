@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - e2e tests (cypress - headless): `yarn cy:all`
 - e2e tests (cypress - open): `yarn cy`
 
+[![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://cypress.io)
+
 ### [Live Demo](http://atxtrails.ajlwebdev.com)
 
-[![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://cypress.io)
