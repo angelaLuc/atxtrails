@@ -11,6 +11,7 @@ import FilterControl from '../map/controls/filters/urban-trail-filter-control';
 import TrailFilterPanel from './trail-filter-panel';
 import axios from 'axios/index';
 import RefreshControl from '../map/controls/refresh/refresh-control';
+
 const CancelToken = axios.CancelToken;
 const cancelUT = CancelToken.source();
 
@@ -106,7 +107,7 @@ class UrbanTrails extends React.Component {
 
     // this is too noticeable
     handleMapResize = () => {
-        let map = this.mapRef.current.leafletElement;
+        let map = this.mapRef.current && this.mapRef.current.leafletElement ? this.mapRef.current.leafletElement : null;
         if (map) {
             map.invalidateSize(true);
         }
@@ -114,7 +115,7 @@ class UrbanTrails extends React.Component {
 
     handleToggleFilter () {
         this.setState(toggleFilterShow(this.state));
-        setTimeout(this.handleMapResize, 200);
+        setTimeout(this.handleMapResize, 10);
     }
 
     refreshMap () {

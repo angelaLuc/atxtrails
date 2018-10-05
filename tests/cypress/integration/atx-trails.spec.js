@@ -72,7 +72,7 @@ describe('ATX Urban Trails test - mocked data', () => {
         cy.get('[data-testid=trail-filter-panel]').should('be.visible');
         cy.get('[data-testid=dropdown-select]').should('have.value', 'VIOLET CROWN TRAIL'); // check selected
         cy.get('[data-testid=refresh-map-control]').click();
-        cy.wait(600);
+        cy.wait('@loadtrails');
         cy.get('[data-testid=trail-filter-panel]').should('not.be.visible');
         cy.get('#trail-name-filter-id').should('not.have.class', 'green-filter-button');
         cy.get('#trail-name-filter-id').click(); // re-open panel
