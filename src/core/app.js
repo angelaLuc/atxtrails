@@ -5,7 +5,10 @@ class App extends Component {
     render () {
         return (
             <div data-testid='app-wrapper' className='container-fluid no-padding'>
-                <nav className={'app-title'} title={'v1.0.1'}>Urban Trails (Austin, TX) - 2015</nav>
+                <nav className={'app-title'}>Urban Trails (Austin, TX) - 2015<span className='float-right'
+                    style={{ marginRight: 8 }}><a data-testid='github-link'
+                        href={'https://github.com/angelaLuc/atxtrails'}><i
+                            className='fab fa-github' /></a></span></nav>
                 <div className={'app'}>
                     <UrbanTrails />
                 </div>

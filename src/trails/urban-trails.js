@@ -115,7 +115,7 @@ class UrbanTrails extends React.Component {
 
     handleToggleFilter () {
         this.setState(toggleFilterShow(this.state));
-        setTimeout(this.handleMapResize, 10);
+        setTimeout(this.handleMapResize, 200);
     }
 
     refreshMap () {

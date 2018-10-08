@@ -78,4 +78,11 @@ describe('ATX Urban Trails test - mocked data', () => {
         cy.get('#trail-name-filter-id').click(); // re-open panel
         cy.get('[data-testid=dropdown-select]').should('contain', 'Show All');
     });
+
+    it('Test github link visible', () => {
+        cy.seedDataAndVisit();
+        cy.get('.map-reactleaflet').should('have.length', 1);
+        cy.get('[data-testid=trail-filter-panel]').should('not.be.visible');
+        cy.get('[data-testid=github-link]').should('be.visible');
+    });
 });
