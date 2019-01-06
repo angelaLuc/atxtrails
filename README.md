@@ -15,7 +15,7 @@
 - e2e tests (cypress - open): `yarn cy`
 
 
-### [Live Demo](http://atxtrails.ajlwebdev.com)
+### [Live Demo](https://atxtrails.ajlwebdev.com)
 
 ## License
 MIT - [LICENSE](./LICENSE)
