@@ -17,6 +17,7 @@ const publicUrl = '';
 const env = getClientEnvironment(publicUrl);
 
 module.exports = {
+    mode: 'development',
     devtool: 'cheap-module-source-map',
     entry: [
         require.resolve('./polyfills'),
@@ -153,7 +154,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new InterpolateHtmlPlugin(env.raw),
+        new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
         new HtmlWebpackPlugin({
             inject: true,
             template: paths.appHtml

@@ -31,6 +31,7 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
     : {};
 
 module.exports = {
+    mode: 'production',
     bail: true,
     devtool: shouldUseSourceMap ? 'source-map' : false,
     entry: [require.resolve('./polyfills'), paths.appIndexJs],
