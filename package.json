@@ -18,9 +18,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:ci": "node test-server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cy:all": "cypress run",
+    "cy:ci": "CYPRESS_baseUrl=http://localhost:3434 start-server-and-test start:ci http://localhost:3434 cy:all"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +39,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^3.3.1",
+    "start-server-and-test": "^1.9.1",
+    "typescript": "^3.5.1"
   }
 }

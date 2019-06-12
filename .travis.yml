@@ -9,6 +9,6 @@ notifications:
     on_failure: always
 node_js: '10'
 install: npm install
-script: npm run build
+script: npm run build &&  npm run cy:ci
 branches:
   only: master
