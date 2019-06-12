@@ -1,0 +1,12 @@
+sudo: true
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: true
+node_js: '10'
+install: npm install
+script: npm run build
+branches:
+  only: master
