@@ -5,6 +5,8 @@ cache:
     - ~/.npm
 notifications:
   email: true
+    on_success: never
+    on_failure: always
 node_js: '10'
 install: npm install
 script: npm run build
