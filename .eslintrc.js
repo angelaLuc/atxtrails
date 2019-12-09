@@ -1,7 +1,7 @@
 module.exports = {
   "settings": {
     "react": {
-      "version": "16.4"
+      "version": "16.10"
     },
   },
   "parser": "babel-eslint",
@@ -16,7 +16,6 @@ module.exports = {
     "jest/globals": true
   },
   "plugins": ["jest"],
-  "extends": ["standard", "standard-react"],
   "rules": {
     "semi": 0,
     "indent": [2, 4],

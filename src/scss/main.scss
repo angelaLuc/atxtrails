@@ -1,7 +1,7 @@
-@import 'theme';
+@import "theme";
 
-@import url('~leaflet/dist/leaflet.css');
-@import url('~bootstrap/dist/css/bootstrap.css');
+@import url("~leaflet/dist/leaflet.css");
+@import url("~bootstrap/dist/css/bootstrap.css");
 
 html {
   position: relative;
@@ -142,7 +142,8 @@ html {
   border: none;
 }
 
-.trail-card > .card-body, .trail-card > .card-header {
+.trail-card > .card-body,
+.trail-card > .card-header {
   padding: 0.25rem;
 }
 
@@ -156,7 +157,9 @@ html {
   border-radius: 8px;
 }
 
-.legend-color-existing, .legend-color-funded, .legend-color-proposed {
+.legend-color-existing,
+.legend-color-funded,
+.legend-color-proposed {
   height: 3px;
   width: 10px;
   display: inline-block;
@@ -218,7 +221,6 @@ div.filter-control {
   text-align: left;
 }
 
-
 select.form-control.dropdown-custom {
   max-width: 200px;
 }
@@ -226,4 +228,3 @@ select.form-control.dropdown-custom {
 a.filter-control.green-filter-button {
   background-color: #66a366;
 }
-
