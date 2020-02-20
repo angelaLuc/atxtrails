@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div data-testid="app-wrapper" className="container-fluid no-padding">
         <nav className={"app-title"}>
-          Urban Trails (Austin, TX) - 2018<span
+          Urban Trails (Austin, TX) - 2020<span
             className="float-right"
             style={{ marginRight: 8 }}
           >

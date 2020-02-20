@@ -20,7 +20,7 @@ function TrailCard(props) {
       <h5 className="card-header2">ID - {id}</h5>
       <div className="card-body">
         <span>
-          Status (in 2018): {buildStat} <br />
+          Status (in 2020): {buildStat} <br />
         </span>
         <span>
           Location: {location}
