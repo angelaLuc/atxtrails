@@ -38,8 +38,7 @@ describe('ATX Urban Trails test - mocked data', () => {
         cy.seedDataAndVisit();
         cy.get('.map-reactleaflet').should('have.length', 1);
         cy.get('#trail-name-filter-id').click();
-        cy.get('[data-testid=dropdown-select]').should('contain', 'Show All');
-        cy.get('select').select('VIOLET CROWN TRAIL');
+        cy.get('[data-testid=dropdown-select]').clear().type('VIOLET CROWN TRAIL');
         cy.get('[data-testid=dropdown-select]').should('have.value', 'VIOLET CROWN TRAIL');
         cy.get('#trail-name-filter-id').should('have.class', 'green-filter-button');
     });
@@ -48,6 +47,7 @@ describe('ATX Urban Trails test - mocked data', () => {
         cy.seedDataAndVisit();
         cy.selectVioletCrown();
         cy.get('#trail-name-filter-id').click(); // re-open panel
+        cy.wait(300)
         cy.get('[data-testid=dropdown-select]').should('have.value', 'VIOLET CROWN TRAIL'); // check selected
     });
 
@@ -56,7 +56,7 @@ describe('ATX Urban Trails test - mocked data', () => {
         cy.selectVioletCrown();
         cy.get('#trail-name-filter-id').click(); // re-open panel
         cy.get('[data-testid=dropdown-select]').should('have.value', 'VIOLET CROWN TRAIL'); // check selected
-        cy.get('select').select('RED LINE TRAIL');
+        cy.get('[data-testid=dropdown-select]').clear().type('RED LINE TRAIL');
         cy.get('[data-testid=dropdown-select]').should('have.value', 'RED LINE TRAIL');
         cy.get('#trail-name-filter-id').should('have.class', 'green-filter-button');
         cy.get('#trail-name-filter-id').click(); // close panel
@@ -76,7 +76,7 @@ describe('ATX Urban Trails test - mocked data', () => {
         cy.get('[data-testid=trail-filter-panel]').should('not.be.visible');
         cy.get('#trail-name-filter-id').should('not.have.class', 'green-filter-button');
         cy.get('#trail-name-filter-id').click(); // re-open panel
-        cy.get('[data-testid=dropdown-select]').should('contain', 'Show All');
+        cy.get('[data-testid=dropdown-select]').should('have.value', 'Show All');
     });
 
     it('Test github link visible', () => {

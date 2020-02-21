@@ -35,8 +35,8 @@ Cypress.Commands.add('selectVioletCrown', () => {
     cy.get('[data-testid=trail-filter-panel]').should('not.be.visible');
     cy.get('#trail-name-filter-id').click();
     cy.get('[data-testid=trail-filter-panel]').should('be.visible');
-    cy.get('[data-testid=dropdown-select]').should('contain', 'Show All');
-    cy.get('select').select('VIOLET CROWN TRAIL');
+    //cy.get('[data-testid=dropdown-select]').should('contain', 'Show All');
+    cy.get('[data-testid=dropdown-select]').clear().type('VIOLET CROWN TRAIL');
     cy.get('[data-testid=dropdown-select]').should('have.value', 'VIOLET CROWN TRAIL');
     cy.get('#trail-name-filter-id').should('have.class', 'green-filter-button');
     cy.get('#trail-name-filter-id').click();

@@ -8,7 +8,7 @@ const Dropdown = props => {
     >
       <input
         name="trails"
-        data-testid="activity-time-record-category"
+        data-testid="dropdown-select"
         className="form-control form-input-list"
         autoComplete={"off"}
         value={props.defaultValue}
