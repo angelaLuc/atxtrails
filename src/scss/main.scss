@@ -228,3 +228,7 @@ select.form-control.dropdown-custom {
 a.filter-control.green-filter-button {
   background-color: #66a366;
 }
+
+input.form-input-list::-webkit-calendar-picker-indicator {
+  display: none;
+}

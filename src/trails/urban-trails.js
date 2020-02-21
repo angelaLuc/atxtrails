@@ -138,39 +138,47 @@ class UrbanTrails extends React.Component {
     this.getTrails(true);
   }
 
-  handleFilterChange(filter) {
-    if (filter) {
-      const value = filter.value;
+  handleFilterChange(event) {
+    if (event) {
+      const target = event.target;
+      const value = target.value;
       const showAll = value === "Show All";
+      let found = false;
       let currentFilter = this.state.filter;
       let options = this.state.filter.options.map(item => {
         if (item.value === value) {
           item.selected = true;
+          found = true;
         } else {
           item.selected = false;
         }
         return item;
       });
       currentFilter.options = options;
-      currentFilter.geoKey += 1;
-      currentFilter.selected = value;
+              currentFilter.geoKey += 1;
+              currentFilter.selected = value;
+      if(found) {
 
-      let currentTrails = this.state.trails;
 
-      let currentFeatures = currentTrails.featureColl.features.map(function(
-        trailData
-      ) {
-        if (showAll || trailData.properties.data.urbanTrail3 === value) {
-          trailData.properties.show = true;
-        } else {
-          trailData.properties.show = false;
-        }
-        return trailData;
-      });
+        let currentTrails = this.state.trails;
 
-      currentTrails.featureColl.features = currentFeatures;
+        let currentFeatures = currentTrails.featureColl.features.map(function (
+            trailData
+        ) {
+          if (showAll || trailData.properties.data.urbanTrail3 === value) {
+            trailData.properties.show = true;
+          } else {
+            trailData.properties.show = false;
+          }
+          return trailData;
+        });
 
-      this.setState({ filter: currentFilter, trails: currentTrails });
+        currentTrails.featureColl.features = currentFeatures;
+
+        this.setState({filter: currentFilter, trails: currentTrails});
+      } else {
+        this.setState({filter: currentFilter});
+      }
     }
   }
 

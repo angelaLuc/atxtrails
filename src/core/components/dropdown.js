@@ -3,35 +3,28 @@ import React from "react";
 
 const Dropdown = props => {
   return (
-    <div className="dropdown form-inline" style={{ textAlign: "left", ...props.style }}>
-      <button
-        className="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenu2"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-        style={{ maxWidth: 200, textOverflow: "ellipsis", overflow: "hidden" }}
+    <div
+      style={{ textAlign: "left", ...props.style }}
+    >
+      <input
+        name="trails"
+        data-testid="activity-time-record-category"
+        className="form-control form-input-list"
+        autoComplete={"off"}
+        value={props.defaultValue}
         title={props.defaultValue}
-      >
-        {props.defaultValue}
-      </button>
-      <div className="dropdown-menu" style={{textAlign: "left"}} aria-labelledby="dropdownMenu2">
-        {props.list.map(function(item) {
-          return (
-            <button
-              className="dropdown-item"
-              style={{width: 200, overflow: "hidden"}}
-              type={"button"}
-              key={item.id}
-              onClick={() => props.changeHandler(item)}
-              title={item.value}
-            >
-              {item.value}
-            </button>
-          );
-        })}
-      </div>
+        placeholder={"Type to Search..."}
+        required
+        onChange={event => props.changeHandler(event)}
+        type={"search"}
+        list={"trail-list"}
+        style={{ width: 220, textOverflow: "ellipsis", overflow: "hidden", paddingLeft: 5, paddingRight: 5 }}
+      />
+      <datalist id="trail-list">
+        {props.list.map(function(item, index) {
+            return <option key={index} value={item.value} style={{ width: 220, overflow: "hidden" }} title={item.value}/>;
+          })}
+      </datalist>
     </div>
   );
 };
