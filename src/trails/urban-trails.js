@@ -7,7 +7,7 @@ import {
   getHomeCoordinatesFromData,
   urbanTrailTransform
 } from "./trail-utils";
-import { GeoJSON, Map, Popup, TileLayer } from "react-leaflet";
+import {GeoJSON, Map, Popup, TileLayer, ZoomControl} from "react-leaflet";
 import Leaflet from "leaflet";
 import TrailCard from "./trail-data-card";
 import { convertLatLng } from "../core/app-utils";
@@ -138,10 +138,9 @@ class UrbanTrails extends React.Component {
     this.getTrails(true);
   }
 
-  handleFilterChange(event) {
-    if (event) {
-      const target = event.target;
-      const value = target.value;
+  handleFilterChange(filter) {
+    if (filter) {
+      const value = filter.value;
       const showAll = value === "Show All";
       let currentFilter = this.state.filter;
       let options = this.state.filter.options.map(item => {
@@ -244,6 +243,7 @@ class UrbanTrails extends React.Component {
             center={this.mapConfig.center}
             zoom={this.mapConfig.zoom}
             maxZoom={this.mapConfig.maxZoom}
+            zoomControl={false}
             className="map-reactleaflet"
             data-testid="trail-map"
           >
@@ -270,6 +270,7 @@ class UrbanTrails extends React.Component {
               onClick={() => this.refreshMap()}
             />
             <LegendControl position={"bottomleft"} />
+            <ZoomControl position={"bottomright"} />
           </Map>
         );
       }

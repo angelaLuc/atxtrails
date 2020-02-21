@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function TrailFilterPanel(props) {
   return (
-    <div data-testid="trail-filter-panel" className={"filter-panel"}>
+    <div data-testid="trail-filter-panel" className={"filter-panel dog-list"}>
       <div className={"header"}>
         <h3>Filters</h3>
       </div>
