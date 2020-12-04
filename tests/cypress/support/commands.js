@@ -32,7 +32,7 @@ Cypress.Commands.add('seedDataAndVisit', (seedData = 'fixture:trail-test-data') 
 
 Cypress.Commands.add('selectVioletCrown', () => {
     cy.get('.map-reactleaflet').should('have.length', 1);
-    cy.get('[data-testid=trail-filter-panel]').should('not.be.visible');
+    cy.get('[data-testid=trail-filter-panel]').should('not.exist');
     cy.get('#trail-name-filter-id').click();
     cy.get('[data-testid=trail-filter-panel]').should('be.visible');
     //cy.get('[data-testid=dropdown-select]').should('contain', 'Show All');
@@ -40,6 +40,6 @@ Cypress.Commands.add('selectVioletCrown', () => {
     cy.get('[data-testid=dropdown-select]').should('have.value', 'VIOLET CROWN TRAIL');
     cy.get('#trail-name-filter-id').should('have.class', 'green-filter-button');
     cy.get('#trail-name-filter-id').click();
-    cy.get('[data-testid=trail-filter-panel]').should('not.be.visible');
+    cy.get('[data-testid=trail-filter-panel]').should('not.exist');
     cy.get('#trail-name-filter-id').should('have.class', 'green-filter-button');
 });
