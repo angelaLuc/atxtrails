@@ -18,9 +18,6 @@ module.exports = {
   "plugins": ["jest"],
   "rules": {
     "semi": 0,
-    "indent": [2, 4],
-    "react/jsx-indent": ["error", 4],
-    "react/jsx-indent-props": ["error", 4],
     "handle-callback-err": "warn"
   }
 };

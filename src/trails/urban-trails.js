@@ -16,6 +16,7 @@ import FilterControl from "../map/controls/filters/urban-trail-filter-control";
 import TrailFilterPanel from "./trail-filter-panel";
 import axios from "axios/index";
 import RefreshControl from "../map/controls/refresh/refresh-control";
+import LocateMeControl from '../map/controls/locate-me/locate-me-control';
 
 const CancelToken = axios.CancelToken;
 const cancelUT = CancelToken.source();
@@ -277,6 +278,7 @@ class UrbanTrails extends React.Component {
               position="topright"
               onClick={() => this.refreshMap()}
             />
+            <LocateMeControl position='bottomleft' />
             <LegendControl position={"bottomleft"} />
             <ZoomControl position={"bottomright"} />
           </Map>
