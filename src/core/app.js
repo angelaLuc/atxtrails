@@ -7,7 +7,7 @@ class App extends Component {
       <div data-testid="app-wrapper" className="container-fluid no-padding">
         <nav className={"app-title"}>
           Urban Trails (Austin, TX) - 2021<span
-            className="float-right"
+            className="float-end"
             style={{ marginRight: 8 }}
           >
             <a
