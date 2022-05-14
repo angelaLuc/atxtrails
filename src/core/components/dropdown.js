@@ -10,8 +10,8 @@ const Dropdown = props => {
         name="trails"
         data-testid="dropdown-select"
         className="form-control form-input-list"
-        autoComplete={"off"}
-        value={props.defaultValue}
+        autoComplete={"on"}
+        value={props.value}
         title={props.defaultValue}
         placeholder={"Type to Search..."}
         required

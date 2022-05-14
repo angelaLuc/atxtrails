@@ -4,7 +4,7 @@ module.exports = {
       "version": "16.10"
     },
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   // "parserOptions": {
   //   "ecmaVersion": 6,
   //   "sourceType": "module",

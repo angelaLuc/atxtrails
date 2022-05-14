@@ -3,36 +3,55 @@ import { sortByProperty } from "../core/app-utils";
 
 export function transformGEO(origGeoData) {
   const modifiedGeoData = {
-    buildStat: origGeoData.build_stat,
+    buildStat: origGeoData.build_status,
     id: origGeoData.objectid,
-    lengthMile: origGeoData.length_mil,
-    location: origGeoData.location,
-    trailSurface: origGeoData.trail_surf,
+    lengthMile: origGeoData.length_miles,
+    location: `${origGeoData.city_municipal}`,
+    trailSurface: origGeoData.trail_surface_type,
     priority: origGeoData.priority,
-    managedBy: origGeoData.managing_a,
-    shapeLength: origGeoData.shape_len,
+    managedBy: origGeoData.managing_agency_name,
+    shapeLength: origGeoData.shape_length,
     geometry: origGeoData.the_geom,
-    urbanTrail1: origGeoData.urban_tr_1,
-    urbanTrail2: origGeoData.urban_tr_2,
-    urbanTrail3: origGeoData.urban_tr_3,
-    urbanTrail4: origGeoData.urban_tr_4,
-    urbanTrail: origGeoData.urban_trail,
+    urbanTrail1: origGeoData.urban_trail_network_id,
+    urbanTrail2: origGeoData.urban_trail_name,
+    urbanTrail3: origGeoData.urban_trail_system_name,
+    urbanTrail4: origGeoData.urban_trail_shared_name,
+    urbanTrail: origGeoData.urban_tr_5,
     trailWidthFeet: origGeoData.width
   };
   return modifiedGeoData;
 }
 
+const BUILD_STATUS_OPTIONS = {
+  EXISTING: "black",
+  FUNDED: "blue",
+  PROPOSED: "red",
+  DEFAULT: "gray"
+}
+
 export function getBuildStatColor(type) {
-  switch (type) {
+
+  const buildType = type ? type.toUpperCase() : type;
+  let colorStat = null;
+  switch (buildType) {
     case "EXISTING":
-      return "black";
+      colorStat = BUILD_STATUS_OPTIONS.EXISTING; break;
     case "FUNDED":
-      return "green";
+      colorStat = BUILD_STATUS_OPTIONS.FUNDED; break;
     case "PROPOSED":
-      return "red";
+      colorStat = BUILD_STATUS_OPTIONS.PROPOSED; break;
     default:
-      return "gray";
+      colorStat = BUILD_STATUS_OPTIONS.DEFAULT;
   }
+  if (colorStat === BUILD_STATUS_OPTIONS.DEFAULT) {
+    if(buildType.startsWith("FUNDED")) {
+      colorStat = BUILD_STATUS_OPTIONS.FUNDED
+    }
+    if(buildType.startsWith("PROPOSED")) {
+      colorStat = BUILD_STATUS_OPTIONS.PROPOSED;
+    }
+  }
+  return colorStat;
 }
 
 export function getFilters(data) {
