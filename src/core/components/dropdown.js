@@ -11,7 +11,7 @@ const Dropdown = props => {
         data-testid="dropdown-select"
         className="form-control form-input-list"
         autoComplete={"on"}
-        value={props.value}
+        value={props.defaultValue}
         title={props.defaultValue}
         placeholder={"Type to Search..."}
         required
