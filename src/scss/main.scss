@@ -58,7 +58,7 @@ html {
   width: 30px;
 }
 
-.my-div-icon.dog {
+.my-div-icon.filter {
   border-color: #000000;
   color: #000000;
 }
@@ -72,22 +72,22 @@ html {
   text-transform: capitalize;
 }
 
-.incident-dog {
+.incident-filter {
   border-bottom: 1px solid #939393;
 }
 
-.dog-list {
+.filter-list {
   display: flex;
   flex: 200px 0 0;
   flex-direction: column;
   padding: 0;
 }
 
-.dog-list .header {
+.filter-list .header {
   color: #646464;
 }
 
-.dog-list .header h3 {
+.filter-list .header h3 {
   font-size: 1em;
   line-height: 1.3;
   padding: 0.3em 0;
@@ -97,13 +97,13 @@ html {
   overflow-y: auto;
 }
 
-.dog-list .list {
+.filter-list .list {
   padding: 0;
   flex: 1;
   text-align: left;
 }
 
-.dog-list .list .dog-row {
+.filter-list .list .filter-row {
   border-bottom: 1px solid #e7e7e7;
   height: 30px;
   line-height: 1.8;
@@ -114,20 +114,20 @@ html {
   text-overflow: ellipsis;
   max-width: 200px;
 }
-.dog-list .list .dog-row:hover {
+.filter-list .list .filter-row:hover {
   background-color: #e7e7e7;
 }
 
-.dog-list .list .dog-row:first-child {
+.filter-list .list .filter-row:first-child {
   border-top: 1px solid #e7e7e7;
 }
 
 @media (max-width: 768px) {
-  .dog-list {
+  .filter-list {
     flex: 120px 0 0;
   }
 
-  .dog-list .list .dog-row {
+  .filter-list .list .filter-row {
     height: 44px;
     line-height: 2.4;
     max-width: 120px;
@@ -155,6 +155,16 @@ html {
   padding: 5px;
   border: 1px solid gray;
   border-radius: 8px;
+}
+
+.leaflet-bar a:hover {
+  background-color: white;
+}
+
+.leaflet-control {
+  & a:hover {
+    color: currentColor;
+  }
 }
 
 .legend-color-existing,
