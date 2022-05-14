@@ -29,4 +29,4 @@ jobs:
     - name: Run build
       run: CI="" npm run build
     - name: Run tests
-      run: npm cy:ci
+      run: npm run cy:ci
