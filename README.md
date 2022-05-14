@@ -10,7 +10,8 @@
 - With Coverage: `yarn test:cov`
 
 [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://cypress.io)
-[![Build Status](https://travis-ci.com/angelaLuc/atxtrails.svg?branch=master)](https://travis-ci.com/angelaLuc/atxtrails)
+![Build status](https://github.com/angelaLuc/atxtrails/actions/workflows/ci.yml/badge.svg?branch=main)
+
 ### End to End (e2e) tests require a running server
 - e2e tests (cypress - headless): `yarn cy:all`
 - e2e tests (cypress - open): `yarn cy`
