@@ -1,6 +1,6 @@
 {
   "name": "atx-urban-trails",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "dependencies": {
     "@turf/center-mean": "6.5.0",

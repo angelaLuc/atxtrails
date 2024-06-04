@@ -29,7 +29,7 @@ const BUILD_STATUS_OPTIONS = {
   DEFAULT: "gray"
 }
 
-export function getBuildStatColor(type) {
+export function getBuildStatColor(type = "UNKNOWN") {
 
   const buildType = type ? type.toUpperCase() : type;
   let colorStat = null;
