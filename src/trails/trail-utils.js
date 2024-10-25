@@ -3,22 +3,30 @@ import { sortByProperty } from "../core/app-utils";
 
 export function transformGEO(origGeoData) {
   const modifiedGeoData = {
-    buildStat: origGeoData.build_status,
-    id: origGeoData.objectid,
-    lengthMile: origGeoData.length_miles,
-    location: `${origGeoData.city_municipal}`,
-    trailSurface: origGeoData.trail_surface_type,
-    priority: origGeoData.priority,
-    managedBy: origGeoData.managing_agency_name,
-    shapeLength: origGeoData.shape_length,
-    geometry: origGeoData.the_geom,
-    urbanTrail1: origGeoData.urban_trail_network_id,
-    urbanTrail2: origGeoData.urban_trail_name,
-    urbanTrail3: origGeoData.urban_trail_system_name,
-    urbanTrail4: origGeoData.urban_trail_shared_name,
-    urbanTrail: origGeoData.urban_tr_5,
-    trailWidthFeet: origGeoData.width
+    buildStat: origGeoData?.build_status,
+    id: origGeoData?.objectid,
+    lengthMile: origGeoData?.length_miles,
+    location: `${origGeoData?.city_municipal}` || "Unknown",
+    trailSurface: origGeoData?.trail_surface_type,
+    priority: origGeoData?.priority || "Unknown",
+    managedBy: origGeoData?.managing_agency_name,
+    shapeLength: origGeoData?.shape_length,
+    geometry: origGeoData?.the_geom,
+    urbanTrail1: origGeoData?.urban_trail_network_id,
+    urbanTrail2: origGeoData?.urban_trail_name,
+    urbanTrail3: origGeoData?.urban_trail_system_name,
+    urbanTrail4: origGeoData?.urban_trail_type,
+    urbanTrail: origGeoData?.urban_trail_feature,
+    trailWidthFeet: origGeoData?.width
   };
+  const testForValidLatLonArray = modifiedGeoData?.geometry.coordinates[0];
+  //console.log('STAT', modifiedGeoData.buildStat);
+  if(testForValidLatLonArray?.length) {
+    const surveySays = testForValidLatLonArray.filter((latlon) => testForValidLatLon(latlon[0], latlon[1])).length > 0
+    if(!surveySays) {
+      return null;
+    }
+  }
   return modifiedGeoData;
 }
 
@@ -37,8 +45,10 @@ export function getBuildStatColor(type = "UNKNOWN") {
     case "EXISTING":
       colorStat = BUILD_STATUS_OPTIONS.EXISTING; break;
     case "FUNDED":
+    case "CONSTRUCTION":
       colorStat = BUILD_STATUS_OPTIONS.FUNDED; break;
     case "PROPOSED":
+    case "DESIGN":
       colorStat = BUILD_STATUS_OPTIONS.PROPOSED; break;
     default:
       colorStat = BUILD_STATUS_OPTIONS.DEFAULT;
@@ -47,7 +57,7 @@ export function getBuildStatColor(type = "UNKNOWN") {
     if(buildType.startsWith("FUNDED")) {
       colorStat = BUILD_STATUS_OPTIONS.FUNDED
     }
-    if(buildType.startsWith("PROPOSED")) {
+    if(buildType.startsWith("PROPOSED") || buildType.startsWith("PRELIMINARY")) {
       colorStat = BUILD_STATUS_OPTIONS.PROPOSED;
     }
   }
@@ -76,28 +86,36 @@ export function getFilters(data) {
   return sortedFilterOptions;
 }
 
+export function testForValidLatLon(x,y) {
+  //console.log(`xxxxx${x} yyyyy${y} result${-90 <= y && y <= +90 && -180 <= x && x <= 180}`)
+  //console.log('result', -90 <= y && y <= +90 && -180 <= x && x <= 180);
+  return -90 <= y && y <= +90 && -180 <= x && x <= 180;
+}
+
 export function urbanTrailTransform(geojson) {
   let results = geojson.reduce(
     (acc, geo) => {
       const transGEO = transformGEO(geo);
-      if (acc.buildStatTypes[transGEO.buildStat]) {
-        acc.buildStatTypes[transGEO.buildStat].push(transGEO.id);
-      } else {
-        acc.buildStatTypes[transGEO.buildStat] = [transGEO.id];
+      //console.log('transgeo', transGEO)
+      if (transGEO) {
+        if (acc.buildStatTypes[transGEO.buildStat]) {
+          acc.buildStatTypes[transGEO.buildStat].push(transGEO.id);
+        } else {
+          acc.buildStatTypes[transGEO.buildStat] = [transGEO.id];
+        }
+
+        if (acc.trailNames[transGEO.urbanTrail3]) {
+          acc.trailNames[transGEO.urbanTrail3].push(transGEO.id);
+        } else {
+          acc.trailNames[transGEO.urbanTrail3] = [transGEO.id];
+        }
+
+        acc.featureColl.features.push({
+          type: "Feature",
+          geometry: transGEO.geometry,
+          properties: {type: transGEO.buildStat, data: transGEO, show: true}
+        });
       }
-
-      if (acc.trailNames[transGEO.urbanTrail3]) {
-        acc.trailNames[transGEO.urbanTrail3].push(transGEO.id);
-      } else {
-        acc.trailNames[transGEO.urbanTrail3] = [transGEO.id];
-      }
-
-      acc.featureColl.features.push({
-        type: "Feature",
-        geometry: transGEO.geometry,
-        properties: { type: transGEO.buildStat, data: transGEO, show: true }
-      });
-
       return acc;
     },
     {
@@ -128,5 +146,6 @@ export const getHomeCoordinatesFromData = data => {
         ? mean.geometry.coordinates
         : null;
   }
+
   return home;
 };

@@ -36,8 +36,6 @@ function TrailCard(props) {
           Trail Width: {trailWidthFeet} feet <br />
         </span>
         <ul className="list-group list-group-flush list-unstyled">
-          <li>{urbanTrail}</li>
-          <li>{urbanTrail1}</li>
           <li>{urbanTrail2}</li>
           <li>{urbanTrail3}</li>
           <li>{urbanTrail4}</li>
